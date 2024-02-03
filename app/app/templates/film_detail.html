@@ -1,0 +1,18 @@
+<!-- templates/film_detail.html -->
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{ film.titre }}</h2>
+    <p>Réalisateur: {{ film.realisateur }}</p>
+    <p>Année de sortie: {{ film.annee_sortie }}</p>
+    <p>Genre: {{ film.genre }}</p>
+    <!-- Affichage des critiques -->
+    <h3>Critiques</h3>
+    <!-- Bouton pour liker le film -->
+    <a href="{{ url_for('main.like_film', id_film=film.id) }}" class="btn btn-primary">Like</a>
+
+    {% for critique in film.critiques %}
+        <p>{{ critique.contenu }}</p>
+        <!-- Bouton pour liker la critique -->
+        <a href="{{ url_for('main.like_critique', id_critique=critique.id) }}" class="btn btn-primary">Like</a>
+    {% endfor %}
+{% endblock %}

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, IntegerField, TextAreaField
 from wtforms.validators import DataRequired, Email, EqualTo
 
 class InscriptionForm(FlaskForm):
@@ -13,3 +13,15 @@ class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     mot_de_passe = PasswordField('Mot de Passe', validators=[DataRequired()])
     submit = SubmitField('Connexion')
+
+class AjoutFilmForm(FlaskForm):
+    titre = StringField('Titre', validators=[DataRequired()])
+    realisateur = StringField('Réalisateur')
+    annee_sortie = IntegerField('Année de Sortie')
+    genre = StringField('Genre')
+    submit = SubmitField('Ajouter le Film')
+
+class CritiqueForm(FlaskForm):
+    contenu = TextAreaField('Critique', validators=[DataRequired()])
+    submit = SubmitField('Publier')
+
